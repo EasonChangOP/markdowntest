@@ -13,6 +13,8 @@
 - - -
 
 ## 連結
-[Markdown](http://zh.wikipedia.com/wiki/Markdown/ "Markdown")
+[Markdown語法說明](http://markdown.tw/ "Markdown語法說明")
 
-[Moudle Layout Diagram] C:\Users\Eason\Desktop\Hiver3_AllModule_Layout_SchematicDiagram
+[google]: http://google.com/        "Google"
+
+![Markdown](zh.wikipedia.org "")
