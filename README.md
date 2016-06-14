@@ -8,7 +8,9 @@
 2. [Pinouts](#Pinouts)  
 3. [Assembly](#Assembly)  
 4. [How to use](#How to use)  
-5. [Downloads](#Downloads)  
+5. [Electrical Specifications](#Electrical Specifications)  
+6. [Downloads](#Downloads)  
+
 
 <a name="Overiew"></a>
 ## 1. Overview  
@@ -48,14 +50,15 @@ Read PIR state
 * BLE Dongle + BLE shepherd(freebird)  
 * How to use BLE shepherd(freebird)  
 
-<a name="Electrical Specifications "></a>
+<a name="Electrical Specifications"></a>
 ## 5. Electrical Specifications   
-| Parameter         | Absolute Maximum Rating  | Uints
-|-------------------|--------------------------|-------------
-| Power             |                          |  W
-| Operating current |                          |  A
-| Vcc to Gound      |                          |  V
-| 5V to Ground      |                          |  V
+
+| Parameter         | Absolute Maximum Rating  | Uints  
+|-------------------|--------------------------|-------------  
+| Power             |                          |  W  
+| Operating current |                          |  A  
+| Vcc to Gound      |                          |  V  
+| 5V to Ground      |                          |  V  
 
 <a name="Downloads"></a>
 ## 6. Downloads  
