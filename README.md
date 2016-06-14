@@ -35,12 +35,12 @@ This module can control on/off and read current whether AC or DC cureent. The cu
 <a name="How to use"></a>
 ## 4. How to use
 
-*BLE Dongle + BLE shepherd(freebird)
-*How to use BLE shepherd(freebird)
+* BLE Dongle + BLE shepherd(freebird)
+* How to use BLE shepherd(freebird)
 
 <a name="Downloads"></a>
 ## 5. Downloads
 
-*Electrical Specifications
-*[ACS712 Datasheets]http://pdf1.alldatasheet.com/datasheet-pdf/view/168326/ALLEGRO/ACS712.html "ACS712"
-*Schematic
+* Electrical Specifications
+* [ACS712 Datasheets]http://pdf1.alldatasheet.com/datasheet-pdf/view/168326/ALLEGRO/ACS712.html "ACS712"
+* Schematic
