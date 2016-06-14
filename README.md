@@ -48,10 +48,19 @@ Read PIR state
 * BLE Dongle + BLE shepherd(freebird)  
 * How to use BLE shepherd(freebird)  
 
-<a name="Downloads"></a>
-## 5. Downloads  
+<a name="Electrical Specifications "></a>
+## 5. Electrical Specifications   
+| Parameter         | Absolute Maximum Rating  | Uints
+|-------------------|--------------------------|-------------
+| Power             |                          |  W
+| Operating current |                          |  A
+| Vcc to Gound      |                          |  V
+| 5V to Ground      |                          |  V
 
-Electrical Specifications  
+<a name="Downloads"></a>
+## 6. Downloads  
+
+ 
 [ACS712 Datasheets](http://pdf1.alldatasheet.com/datasheet-pdf/view/168326/ALLEGRO/ACS712.html "ACS712")  
 Schematic  
 [google]: http://google.com/ "google"  
