@@ -1,46 +1,57 @@
-#Smart Power Relay
----
-![Smart Power Relay](http://imgur.com/blQHcna "Smart Power Relay")
+#Smart Power Relay  
+---  
+![Smart Power Relay](http://imgur.com/blQHcna "Smart Power Relay")  
 
-## Guide Content
+## Guide Content  
 
-1. [Overiew](#Overiew)
-2. [Pinouts](#Pinouts)
-3. [Assembly](#Assembly)
-4. [How to use](#How to use)
-5. [Downloads](#Downloads)
+1. [Overiew](#Overiew)  
+2. [Pinouts](#Pinouts)  
+3. [Assembly](#Assembly)  
+4. [How to use](#How to use)  
+5. [Downloads](#Downloads)  
 
 <a name="Overiew"></a>
-## 1. Overview
+## 1. Overview  
 
-This module can control on/off and read current whether AC or DC cureent. The current data from ACS712-05A will be receive to ADC which is on the BLE. 
+This module can remote control on/off status, measure current AC cureent and connect PIR sensor(optional). The current data from ACS712-05A will be receive to ADC which is on the BLE.  
+
+* Features
+  * remote control relay ON/OFF status
+  * measure/report AC current from 0.12 to 3A
+  * measure/report AC power
+  * (optional) Connect a PIR sensor for triggering
+
+
 
 
 <a name="Pinouts"></a>
-## 2. Pinouts
+## 2. Pinouts  
 
-* AO
-	Current data
-* DIN
-	Contorl on/off
-* 5VCal
-	Reference Voltage
-* PIR
-	Read PIR state
+* AO  
+Read Current data  
+* DIN  
+Contorl Relay on/off  
+* 5VCal  
+Reference Voltage  
+* PIR(optional)  
+Read PIR state  
 
 <a name="Assembly"></a>
-## 3. Assembly
-
+## 3. Assembly  
+#### USB 5V Power moudle  
+#### BLE module  
+#### Smart Power Relay module  
 
 <a name="How to use"></a>
-## 4. How to use
+## 4. How to use  
 
-* BLE Dongle + BLE shepherd(freebird)
-* How to use BLE shepherd(freebird)
+* BLE Dongle + BLE shepherd(freebird)  
+* How to use BLE shepherd(freebird)  
 
 <a name="Downloads"></a>
-## 5. Downloads
+## 5. Downloads  
 
 Electrical Specifications  
-* [ACS712 Datasheets]: http://pdf1.alldatasheet.com/datasheet-pdf/view/168326/ALLEGRO/ACS712.html "ACS712"
+[ACS712 Datasheets](http://pdf1.alldatasheet.com/datasheet-pdf/view/168326/ALLEGRO/ACS712.html "ACS712")  
 Schematic  
+[google]: http://google.com/ "google"  
