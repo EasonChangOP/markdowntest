@@ -42,5 +42,5 @@ This module can control on/off and read current whether AC or DC cureent. The cu
 ## 5. Downloads
 
 * Electrical Specifications
-* [ACS712 Datasheets]http://pdf1.alldatasheet.com/datasheet-pdf/view/168326/ALLEGRO/ACS712.html "ACS712"
+* [ACS712 Datasheets]:http://pdf1.alldatasheet.com/datasheet-pdf/view/168326/ALLEGRO/ACS712.html "ACS712"
 * Schematic
