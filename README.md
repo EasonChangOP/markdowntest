@@ -1,17 +1,18 @@
-# How to change sivann's ZigBee program  
+# Modify sivann's ZigBee sample code to your needs  
 ---  
 
-## Guide Content  
+## Contents  
 
-1. [Files](#Files)  
-2. [Event](#Event)  
-3. [Program](#Program)  
-4. [Cluster & attribute](#Cluster & attribute)  
-5. [Organized network](#Organized network)  
+1. [Modify files](#Modify files)  
+2. [Cluster & attribute](#Cluster & attribute)  
+3. [How to define and handle your events](#How to define and handle your events)  
+4. [Example step by step](#Example step by step)  
+5. [Modify network to your setting](#Modify network to your setting)  
 
 
-<a name="Files"></a>
-## 1. Files  
+
+<a name="Modify files"></a>
+## 1. Modify files  
 以愛文西門科技的 SampleWeatherStation 為例，並以 IAR 開啟其 workspace 。  
 * IAR開啟WeatherStation workspace :  
   * File -> Open -> Worksapce  
@@ -23,19 +24,53 @@
 * 檔案有 OSAL_SampleWeatherStation.c, zcl_SampleWeatherStation.c, zcl_SampleWeatherStation.h & zclSampleWeatherStation_data.c 。  
 * 會修改到的檔案 zcl_SampleWeatherStation.c, zcl_SampleWeatherStation.h & zclSampleWeatherStation_data.c  。  
 
+<a name="Cluster & attribute"></a>
+## 2. Cluster & attribute  
+* 資料存取於ZCL或是Private的cluster的attribute, command 。  
+* 在 zclSampleWeatherStation_data.c 的 zclSampleTemperatureSensor_Attrs 下定義。  
+**Example:**  
+```c
+CONST zclAttrRec_t zclSampleTemperatureSensor_Attrs[SAMPLETEMPERATURESENSOR_MAX_ATTRIBUTES] =
+{
+...
 
-<a name="Event"></a>
-## 2. Event  
+// *** Temperature Measurement Attriubtes ***
+  {
+    ZCL_CLUSTER_ID_MS_TEMPERATURE_MEASUREMENT,  // Cluster
+    { // Attribute record
+      ATTRID_MS_TEMPERATURE_MEASURED_VALUE, //Attribute
+      ZCL_DATATYPE_INT16, //Datatype
+      ACCESS_CONTROL_READ,  //Access read or write
+      (void *)&zclSampleTemperatureSensor_MeasuredValue //command or data
+    }
+  },
+// *** Humiudity Measurement Attriubtes ***
+  {
+    ZCL_CLUSTER_ID_MS_RELATIVE_HUMIDITY,  // Cluster
+    { // Attribute record
+      ATTRID_MS_RELATIVE_HUMIDITY_MEASURED_VALUE, //Attribute
+      ZCL_DATATYPE_UINT16,  //Datatype
+      ACCESS_CONTROL_READ,  //Access read or write
+      (void *)&zclSampleTempHumiSensor_HumiMeasuredValue  //command or data
+    }
+  },
+...
+
+};
+```
+
+<a name="How to define and handle your events"></a>
+## 3. How to define and handle your events  
 * 在 zcl_SampleWeatherStation.h 定義應用事件的名稱。  
 ```
-define TEMPERATURE_HUMIDITY_SENSOR_EVT 0x0040  
+define TEMPERATURE_HUMIDITY_SENSOR_EVT 0x0040
 ```
 * 在 zcl_SampleWeatherStation.c 的 zclSampleWeatherStation_Init 設置事件。  
 ```
 osal_set_event(task_id, TEMPERATURE_HUMIDITY_SENSOR_EVT);
 ```
 * 在 zcl_SampleWeatherStation.c 的 zclSampleWeatherStation_event_loop 設置事件迴圈與應用。  
-```
+```c
 /******TempHumi******/
 if ( events & TEMPERATURE_HUMIDITY_SENSOR_EVT )
 {
@@ -46,10 +81,10 @@ if ( events & TEMPERATURE_HUMIDITY_SENSOR_EVT )
 }
 ```
 
-<a name="Program"></a>
-## 3. Program  
+<a name="Example step by step"></a>
+## 4. Example step by step  
 **Example:**  
-```
+```c
 /******TempHumi******/
 if ( events & TEMPERATURE_HUMIDITY_SENSOR_EVT )
 {
@@ -100,43 +135,10 @@ static void SendTempHumiData(uint8 *hData){
 }
 ```
 
-<a name="Cluster & attribute"></a>
-## 4. Cluster & attribute  
-* 資料存取於ZCL或是Private的cluster的attribute, command 。  
-* 在 zclSampleWeatherStation_data.c 的 zclSampleTemperatureSensor_Attrs 下定義。  
-**Example:**  
-```
-CONST zclAttrRec_t zclSampleTemperatureSensor_Attrs[SAMPLETEMPERATURESENSOR_MAX_ATTRIBUTES] =
-{
-...
 
-// *** Temperature Measurement Attriubtes ***
-  {
-    ZCL_CLUSTER_ID_MS_TEMPERATURE_MEASUREMENT,  // Cluster
-    { // Attribute record
-      ATTRID_MS_TEMPERATURE_MEASURED_VALUE, //Attribute
-      ZCL_DATATYPE_INT16, //Datatype
-      ACCESS_CONTROL_READ,  //Access read or write
-      (void *)&zclSampleTemperatureSensor_MeasuredValue //command or data
-    }
-  },
-// *** Humiudity Measurement Attriubtes ***
-  {
-    ZCL_CLUSTER_ID_MS_RELATIVE_HUMIDITY,  // Cluster
-    { // Attribute record
-      ATTRID_MS_RELATIVE_HUMIDITY_MEASURED_VALUE, //Attribute
-      ZCL_DATATYPE_UINT16,  //Datatype
-      ACCESS_CONTROL_READ,  //Access read or write
-      (void *)&zclSampleTempHumiSensor_HumiMeasuredValue  //command or data
-    }
-  },
-...
 
-};
-```
-
-<a name="Organized network"></a>
-## 5. Organized network   
+<a name="Modify network to your setting"></a>
+## 5. Modify network to your setting   
 How to change device's Channel, PAN ID & EndPoint  
 * EndPoint can be changed in zcl_SampleWeatherStation.h  
 ```
