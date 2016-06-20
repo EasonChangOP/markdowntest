@@ -1,4 +1,4 @@
-# How to change ZigBee program  
+# How to change sivann's ZigBee program  
 ---  
 
 ## Guide Content  
@@ -12,16 +12,20 @@
 
 <a name="Files"></a>
 ## 1. Files  
-說明可能更動的檔案，Ex:project/.../xxx.c, xxx.h...  
-接下來都會以愛文西門科技的 SampleWeatherStation 為例，並以 IAR 開啟其 workspace 。  
-* 檔案放置位址: C:\Texas Instruments\Z-Stack Home 1.2.1\Projects\zstack\HomeAutomation\SampleWeatherStation\Source。  
+以愛文西門科技的 SampleWeatherStation 為例，並以 IAR 開啟其 workspace 。  
+* IAR開啟WeatherStation workspace :  
+  * File -> Open -> Worksapce  
+[How to Open Workspace](http://i.imgur.com/IuSgFZP.png "How to Open Workspace")  
+  * 開啟 SampleWeatherStation :  
+[Open SampleWeatherStation](http://i.imgur.com/MIfgIZc.png "Open SampleWeatherStation")  
+* 檔案放置位址: App 裡面，其位置可以用 Open Containing Folder 。  
+[Files in App](http://i.imgur.com/skfhneD.png "Files in App")  
 * 檔案有 OSAL_SampleWeatherStation.c, zcl_SampleWeatherStation.c, zcl_SampleWeatherStation.h & zclSampleWeatherStation_data.c 。  
 * 會修改到的檔案 zcl_SampleWeatherStation.c, zcl_SampleWeatherStation.h & zclSampleWeatherStation_data.c  。  
 
 
 <a name="Event"></a>
 ## 2. Event  
-定義事件(xxx.h)，如何觸發及循環(xxx.c)  
 * 在 zcl_SampleWeatherStation.h 定義應用事件的名稱。  
 ```
 define TEMPERATURE_HUMIDITY_SENSOR_EVT 0x0040  
@@ -44,7 +48,6 @@ if ( events & TEMPERATURE_HUMIDITY_SENSOR_EVT )
 
 <a name="Program"></a>
 ## 3. Program  
-應用程式的修改及資料的存取  
 **Example:**  
 ```
 /******TempHumi******/
@@ -99,8 +102,7 @@ static void SendTempHumiData(uint8 *hData){
 
 <a name="Cluster & attribute"></a>
 ## 4. Cluster & attribute  
-定義與資料相對應的zcl的cluster的attribute  
-* 將資料存取於ZCL或是Private的cluster的attribute, command 。  
+* 資料存取於ZCL或是Private的cluster的attribute, command 。  
 * 在 zclSampleWeatherStation_data.c 的 zclSampleTemperatureSensor_Attrs 下定義。  
 **Example:**  
 ```
@@ -134,50 +136,14 @@ CONST zclAttrRec_t zclSampleTemperatureSensor_Attrs[SAMPLETEMPERATURESENSOR_MAX_
 ```
 
 <a name="Organized network"></a>
-## 5. InCluster & OutCluster   
-ZigBee的傳輸方式  
-* 在AF層註冊 zclSampleLight_SimpleDesc ，當使用的 cluster 都在 HA profile 裡可用 zclHA_Init 註冊，如果不在或是 private profile  可用 afRegister 。  
-```
-// This app is part of the Home Automation Profile
-  zclHA_Init( &zclSampleLight_SimpleDesc );
-```
-or  
-```
-  // Register for a test endpoint
-  afRegister( &zclSampleLight_SimpleDesc );
-```
-* 註冊內容  
-```
-SimpleDescriptionFormat_t zclSampleLight_SimpleDesc =
-{
-  SAMPLELIGHT_ENDPOINT,                  //  int Endpoint;
-  ZCL_HA_PROFILE_ID,                     //  uint16 AppProfId;
-#ifdef ZCL_LEVEL_CTRL
-  ZCL_HA_DEVICEID_DIMMABLE_LIGHT,        //  uint16 AppDeviceId;
-#else
-  ZCL_HA_DEVICEID_ON_OFF_LIGHT,          //  uint16 AppDeviceId;
-#endif
-  SAMPLELIGHT_DEVICE_VERSION,            //  int   AppDevVer:4;
-  SAMPLELIGHT_FLAGS,                     //  int   AppFlags:4;
-  ZCLSAMPLELIGHT_MAX_INCLUSTERS,         //  byte  AppNumInClusters;
-  (cId_t *)zclSampleLight_InClusterList, //  byte *pAppInClusterList;
-  ZCLSAMPLELIGHT_MAX_OUTCLUSTERS,        //  byte  AppNumInClusters;
-  (cId_t *)zclSampleLight_OutClusterList //  byte *pAppInClusterList;
-};
-```
-* Incluster 與 OutCluster 決定 ZigBee 的資料傳輸方向。  
-* 裝置與裝置間的 InCluster 與 OutCluster 須相對應，否則無法彼此傳輸，除了 foundation 的 cross-cluster 指令。  
-
-
-<a name="Organized network"></a>
-## 6. Organized network   
-如何變更裝置的 Channel, PAN ID & EndPoint  
+## 5. Organized network   
+How to change device's Channel, PAN ID & EndPoint  
 * EndPoint can be changed in zcl_SampleWeatherStation.h  
 ```
 #define SAMPLEWEATHERSTAITON_ENDPOINT            8
 ```
-* PAN ID  & Channel 皆在 f8wConfig.cfg 設定
-* f8wConfig.cfg 在 Tools 裡  
+* PAN ID  & Channel 在 f8wConfig.cfg 設定  
+[f8wConfig.cfg in Tools](http://i.imgur.com/2LWAeZI.png "f8wConfig.cfg in Tools")  
 
 #### PAN ID  
 ```
