@@ -16,11 +16,11 @@
 以愛文西門科技的 SampleWeatherStation 為例，並以 IAR 開啟其 workspace 。  
 * IAR開啟WeatherStation workspace :  
   * File -> Open -> Worksapce  
-[How to Open Workspace](http://i.imgur.com/IuSgFZP.png "How to Open Workspace")  
+![How to Open Workspace](http://i.imgur.com/IuSgFZP.png "How to Open Workspace")  
   * 開啟 SampleWeatherStation :  
-[Open SampleWeatherStation](http://i.imgur.com/MIfgIZc.png "Open SampleWeatherStation")  
+![Open SampleWeatherStation](http://i.imgur.com/MIfgIZc.png "Open SampleWeatherStation")  
 * 檔案放置位址: App 裡面，其位置可以用 Open Containing Folder 。  
-[Files in App](http://i.imgur.com/skfhneD.png "Files in App")  
+![Files in App](http://i.imgur.com/skfhneD.png "Files in App")  
 * 檔案有 OSAL_SampleWeatherStation.c, zcl_SampleWeatherStation.c, zcl_SampleWeatherStation.h & zclSampleWeatherStation_data.c 。  
 * 會修改到的檔案 zcl_SampleWeatherStation.c, zcl_SampleWeatherStation.h & zclSampleWeatherStation_data.c  。  
 
@@ -147,7 +147,7 @@ static void SendTempHumiData(uint8 *hData){
 How to change device's Channel, PAN ID & EndPoint  
 
 * PAN ID  & Channel 在 f8wConfig.cfg 設定  
-[f8wConfig.cfg in Tools](http://i.imgur.com/2LWAeZI.png "f8wConfig.cfg in Tools")  
+![f8wConfig.cfg in Tools](http://i.imgur.com/2LWAeZI.png "f8wConfig.cfg in Tools")  
 
 #### PAN ID  
 ```
