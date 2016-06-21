@@ -4,10 +4,10 @@
 ## Contents  
 
 1. [Modify files](#Modify files)  
-2. [Cluster & attribute](#Cluster & attribute)  
+2. [Endpoint & cluster & attribute](#Endpoint & cluster & attribute)  
 3. [How to define and handle your events](#How to define and handle your events)  
 4. [Example step by step](#Example step by step)  
-5. [Modify network to your setting](#Modify network to your setting)  
+5. [Modify ZigBee network to your setting](#Modify ZigBee network to your setting)  
 
 
 
@@ -25,7 +25,12 @@
 * 會修改到的檔案 zcl_SampleWeatherStation.c, zcl_SampleWeatherStation.h & zclSampleWeatherStation_data.c  。  
 
 <a name="Cluster & attribute"></a>
-## 2. Cluster & attribute  
+## 2. Endpoint & cluster & attribute  
+
+* EndPoint can be changed in zcl_SampleWeatherStation.h  
+```c
+#define SAMPLEWEATHERSTAITON_ENDPOINT            8
+```
 * 資料存取於ZCL或是Private的cluster的attribute, command 。  
 * 在 zclSampleWeatherStation_data.c 的 zclSampleTemperatureSensor_Attrs 下定義。  
 **Example:**  
@@ -138,12 +143,9 @@ static void SendTempHumiData(uint8 *hData){
 
 
 <a name="Modify network to your setting"></a>
-## 5. Modify network to your setting   
+## 5. Modify ZigBee network to your setting   
 How to change device's Channel, PAN ID & EndPoint  
-* EndPoint can be changed in zcl_SampleWeatherStation.h  
-```
-#define SAMPLEWEATHERSTAITON_ENDPOINT            8
-```
+
 * PAN ID  & Channel 在 f8wConfig.cfg 設定  
 [f8wConfig.cfg in Tools](http://i.imgur.com/2LWAeZI.png "f8wConfig.cfg in Tools")  
 
